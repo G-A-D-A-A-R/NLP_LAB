@@ -1,0 +1,11 @@
+venv/
+dist/
+automathon.egg-info/
+workspace.code*
+.eggs/
+__pycache__/
+build/
+.idea/
+bazel-*
+.pytest_cache/
+.DS_store

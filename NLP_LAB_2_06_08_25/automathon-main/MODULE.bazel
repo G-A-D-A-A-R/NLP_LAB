@@ -1,0 +1,22 @@
+"""
+Bazel build file for the Python module.
+
+Imports the `rules_python` dependency and the `pip` extension from the
+`rules_python` repository.
+"""
+
+bazel_dep(name = "rules_python", version = "1.4.1")
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.toolchain(
+    python_version = "3.8",
+)
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pypi",
+    python_version = "3.8",
+    requirements_lock = "//:requirements.txt",
+)
+
+use_repo(pip, "pypi")
